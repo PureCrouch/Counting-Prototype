@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 9503158}
   - component: {fileID: 626946897383487515}
   - component: {fileID: 8518907090413137490}
-  - component: {fileID: 317411636883771140}
+  - component: {fileID: 6554179088969631342}
   m_Layer: 0
   m_Name: Animal_Chick
   m_TagString: Chick
@@ -198,7 +198,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.8193727, y: 5.7507634, z: 6.4729233}
   m_Center: {x: -0.041828718, y: 3.2146492, z: 0.893005}
---- !u!114 &317411636883771140
+--- !u!114 &6554179088969631342
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -207,12 +207,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 112640}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 121b54b181e171b43b0296bf12461bc6, type: 3}
+  m_Script: {fileID: 11500000, guid: c093308e61a7ea44091d50e446fffa92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   timeToChangeDirection: 0
   isCollidedWall: 0
   angleOnCollision: 0
+  counterClass: {fileID: 0}
 --- !u!1 &113672
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,12 +2,29 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class NPCController : MonoBehaviour
+public class Chicken : MonoBehaviour
 {
     [SerializeField] private float timeToChangeDirection;
     [SerializeField] private bool isCollidedWall;
     [SerializeField] private float angleOnCollision;
     public Counter counterClass;
+
+    private float testChickenSpeed = 1;
+    public float chickenSpeed //Encapsulation
+    {
+        get { return testChickenSpeed; }
+        set
+        {
+            if (value < 0.0f)
+            {
+                Debug.LogError("You can't set a negative chicken speed!");
+            }
+            else
+            {
+                testChickenSpeed = value;
+            }
+        }
+    }
     // Use this for initialization
     public void Start()
     {
@@ -16,25 +33,12 @@ public class NPCController : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void Update()
+    public void Update() //Abstraction
     {
         timeToChangeDirection -= Time.deltaTime;
-
-        if (isCollidedWall)
-        {
-            Debug.Log(isCollidedWall);
-            isCollidedWall = false;
-        }
-
-        if (timeToChangeDirection <= 0)
-        {
-            ChangeDirection();
-        }
-
-
-        transform.Translate(Vector3.forward * Time.deltaTime);
-
-        Debug.Log(isCollidedWall);
+        TimeIsUp();
+        WallCollision();
+        Move();
     }
 
 
@@ -60,5 +64,26 @@ public class NPCController : MonoBehaviour
     {
         Destroy(gameObject);
         counterClass.ChickenCounter();
+    }
+
+    void TimeIsUp()
+    {
+        if (timeToChangeDirection <= 0)
+        {
+            ChangeDirection();
+        }
+    }
+    void WallCollision()
+    {
+        if (isCollidedWall)
+        {
+            Debug.Log(isCollidedWall);
+            isCollidedWall = false;
+        }
+    }
+
+    public virtual void Move()
+    {
+        transform.Translate(Vector3.forward * chickenSpeed * Time.deltaTime);
     }
 }
